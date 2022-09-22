@@ -7,11 +7,13 @@ pipeline {
         echo 'Building...'
       }
     }
-    environment {
-        SNYK_HOME = tool name: 'Snyk'
-    }
+    
     stage('Test') {
+      environment {
+        SNYK_HOME = tool name: 'Snyk'
+      }
       steps {
+        sh "${SNYK_HOME}/snyk-linux test"
         echo 'Testing...'
         snykSecurity(
           snykInstallation: 'Synk',
