@@ -10,8 +10,8 @@ pipeline {
     
     stage('Test') {
       environment {
-        SNYK_HOME = tool name: 'snyk'
-      }
+		    SNYK_HOME = tool 'snyk@latest'
+	    }
       steps {
         sh "${SNYK_HOME}/snyk-linux test"
         echo 'Testing...'
