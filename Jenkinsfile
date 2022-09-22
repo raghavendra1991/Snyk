@@ -9,6 +9,9 @@ pipeline {
     }
     
     stage('Test') {
+      environment {
+		    SNYK_HOME = tool 'Synk'
+	    }
       steps {
         sh "${SNYK_HOME}/snyk-linux test"
         echo 'Testing...'
